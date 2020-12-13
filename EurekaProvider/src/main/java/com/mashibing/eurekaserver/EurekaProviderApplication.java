@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class EurekaClientApplication {
+public class EurekaProviderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(EurekaClientApplication.class);
+        SpringApplication.run(EurekaProviderApplication.class);
     }
 }

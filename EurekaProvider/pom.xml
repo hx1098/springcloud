@@ -31,7 +31,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- 用来上报节点信息 -->
+        <!-- 用来上报节点信息   启动的信息：Exposing 2 endpoint(s) beneath base path '/actuator'-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
