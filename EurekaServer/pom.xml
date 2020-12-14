@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.mashibing.eurekaServer</groupId>
-    <artifactId>eurekaServer</artifactId>
+    <artifactId>EurekaServer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Eureka-Server</name>
     <description>Demo project for Spring Boot</description>
