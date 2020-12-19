@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * @Title: <br>
  * @Description: <br>
  * @date 2020/12/3 21:45
- *
+ * http://localhost/actuator/beans
  */
 
 @EnableEurekaServer
