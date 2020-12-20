@@ -1,6 +1,7 @@
 package com.mashibing.eurekaserver;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +21,13 @@ public class mainController {
     @Autowired
     DiscoveryClient client;
 
+    @Value("${server.port}")
+    String port;
+
+
     @GetMapping("/getHi")
     public String getHi(){
-        return  "Hi";
+        return  "Hi,我的port是" + port;
     }
 
     @GetMapping("/client")

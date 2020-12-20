@@ -2,6 +2,8 @@ package com.mashibing.eurekaserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author hx   <br>
@@ -14,5 +16,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EurekaCousumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(EurekaCousumerApplication.class);
+    }
+
+    @Bean
+    RestTemplate getRestTemplate(){
+        return new RestTemplate();
     }
 }
