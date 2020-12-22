@@ -48,17 +48,6 @@ public class mainController2 {
         return forObject;
     }
 
-    @GetMapping("getMap")
-    public ResponseEntity<Map>  getMap(){
-        ServiceInstance provider = lb.choose("provider");
-        String url =  "http://"+provider.getHost() +":"+ provider.getPort()+"/getMap";
-        ResponseEntity<Map> entity  = restTemplate.getForEntity(url,Map.class);
-        System.out.println("respStr" + entity);
-        return  entity;
-    }
-
-
-
     @Autowired
     DiscoveryClient discoveryClient;
     /**
@@ -119,10 +108,8 @@ public class mainController2 {
     @GetMapping("client9")
     public Object client9(){
         String url =  "http://provider/getHi";
-
         System.out.println(url);
         String forObject = restTemplate.getForObject(url, String.class);
-
         return forObject;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,18 @@ public class mainController {
         HashMap<String, String> map = new HashMap<>();
         map.put("name", "500");
         return map;
+    }
+
+    @GetMapping("/getObj")
+    public Person getObj(){
+        Person zhangsan = new Person(123, "zhangsan");
+        return zhangsan;
+    }
+
+    @GetMapping("/getObj2")
+    public Person getObj2(String name){
+        Person zhangsan = new Person(123, name);
+        return zhangsan;
     }
 
 
