@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author hx   <br>
@@ -51,6 +53,13 @@ public class mainController {
     public String health(@RequestParam("status")Boolean status){
         healthStatusService.setStatus(status);
         return healthStatusService.getStatus();
+    }
+
+    @GetMapping("/getMap")
+    public Map<String, String> getMap(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("name", "500");
+        return map;
     }
 
 
