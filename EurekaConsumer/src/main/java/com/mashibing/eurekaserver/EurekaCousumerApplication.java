@@ -24,6 +24,7 @@ public class EurekaCousumerApplication {
     }
 
     @Bean
+    @LoadBalanced
     RestTemplate getRestTemplate(){
         return new RestTemplate();
     }

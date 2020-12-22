@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author hx   <br>
@@ -57,6 +58,73 @@ public class mainController2 {
     }
 
 
+
+    @Autowired
+    DiscoveryClient discoveryClient;
+    /**
+     * s手动负载均衡
+     * @return
+     */
+    @GetMapping("client7")
+    public Object client7(){
+        List<ServiceInstance> instances = discoveryClient.getInstances("provider");
+        //自定义轮训算法(随机)
+        int nextInt = new Random().nextInt(instances.size());
+
+        //轮询
+        /*AtomicInteger atomicInteger = new AtomicInteger();
+        int andIncrement = atomicInteger.getAndIncrement();
+        instances.get(i % instances.size());*/
+
+      /*  for (ServiceInstance instance : instances) {
+            instance.getMetadata();//权重1-9
+        }*/
+
+        System.out.println("instance" + instances);
+
+        ServiceInstance provider = instances.get(nextInt);
+        /* ServiceInstance provider = lb.choose("provider");*/
+
+        String url =  "http://"+provider.getHost() +":"+ provider.getPort()+"/getHi";
+
+        String forObject = restTemplate.getForObject(url, String.class);
+
+        System.out.println(provider.getPort());
+
+        return forObject;
+    }
+
+
+    /**
+     * 使用配置文件properties 定义负载均衡策略
+     *
+     * @return
+     */
+    @GetMapping("client8")
+    public Object client8(){
+        ServiceInstance provider = lb.choose("provider");
+
+        String url =  "http://"+provider.getHost() +":"+ provider.getPort()+"/getHi";
+
+        String forObject = restTemplate.getForObject(url, String.class);
+
+        return forObject;
+    }
+
+
+    /**
+     * 这样也可以访问到远程接口
+     * @return
+     */
+    @GetMapping("client9")
+    public Object client9(){
+        String url =  "http://provider/getHi";
+
+        System.out.println(url);
+        String forObject = restTemplate.getForObject(url, String.class);
+
+        return forObject;
+    }
 
 
 
