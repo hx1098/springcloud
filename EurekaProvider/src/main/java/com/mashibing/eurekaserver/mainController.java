@@ -1,12 +1,14 @@
 package com.mashibing.eurekaserver;
 
+import com.sun.jndi.toolkit.url.Uri;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.net.MalformedURLException;
+import java.nio.charset.Charset;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
@@ -75,6 +77,22 @@ public class mainController {
         return zhangsan;
     }
 
+    /**
+     * 通过这个可以跳转到百度搜索
+     * @param person
+     * @param response
+     * @return
+     * @throws MalformedURLException
+     */
+    @PostMapping("/postLocaltion")
+    public Uri postLocaltion(@RequestBody Person person, HttpServletResponse response) throws MalformedURLException {
+        Uri uri = new Uri("https://www.baidu.com/s?wd=" + person.getName().trim());
+        System.out.println(uri.toString());
+        System.out.println(System.getProperty("file.encoding"));
+        System.out.println(Charset.defaultCharset());
+        response.setHeader("Location",uri.toString());
+        return uri;
+    }
 
 
 }

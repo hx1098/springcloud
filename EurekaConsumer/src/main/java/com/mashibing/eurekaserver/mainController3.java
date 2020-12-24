@@ -6,9 +6,14 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +78,24 @@ public class mainController3 {
         String url =  "http://provider/getObj2?name={name}";
         Map<String, String> stringStringMap = Collections.singletonMap("name", "牛逼人");
         Person forEntity = restTemplate.getForObject(url, Person.class,stringStringMap);
+        BigDecimal bigDecimal = new BigDecimal("1234324");
         return  forEntity;
+    }
+
+    /**
+     * 可以跳转到百度搜索
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    @GetMapping("client15")
+    public Object  getObj15(HttpServletResponse response) throws IOException {
+        String url =  "http://provider/postLocaltion";
+        Map<String, String> stringStringMap = Collections.singletonMap("name", "牛逼人");
+        URI uri = restTemplate.postForLocation(url, stringStringMap, Person.class);
+        System.out.println(uri);
+        response.sendRedirect(uri.toURL().toString());
+        return  null;
     }
 
 
