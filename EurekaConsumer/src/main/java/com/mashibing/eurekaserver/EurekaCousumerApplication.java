@@ -26,7 +26,10 @@ public class EurekaCousumerApplication {
     @Bean
     @LoadBalanced
     RestTemplate getRestTemplate(){
-        return new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
+        //将自定一的restemplate 的拦截器加入到启动中
+        restTemplate.getInterceptors().add(new LoggingClientHttpRequestInterceptor());
+        return restTemplate;
     }
 
 
