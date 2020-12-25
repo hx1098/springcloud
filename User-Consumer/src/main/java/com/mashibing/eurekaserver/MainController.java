@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @Autowired
-    public UserApi userApi;
+    public ConsumerAPI userApi;
 
     @GetMapping("/alive")
     public String Alive(){
