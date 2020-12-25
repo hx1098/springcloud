@@ -6,7 +6,7 @@
 
   ```shell
      euk1端口 : 7001
-     euk1端口 : 7002
+     euk2端口 : 7002
      erurkaProvider: 80
      errekaConsumer: 90
      user-comsumer:  91
