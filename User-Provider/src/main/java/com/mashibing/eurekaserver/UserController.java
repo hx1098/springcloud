@@ -1,6 +1,5 @@
 package com.mashibing.eurekaserver;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,6 +16,12 @@ public class UserController implements UserApi{
     public String isAlive(){
         System.out.println("111111111111111111111111");
         return "ouyeel is Alive!";
+    }
+
+    @Override
+    public Integer getById(Integer id) {
+        System.out.println("当前的id的值是: " + id);
+        return id;
     }
 
 }

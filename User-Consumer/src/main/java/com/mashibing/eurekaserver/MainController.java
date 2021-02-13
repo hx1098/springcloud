@@ -3,6 +3,7 @@ package com.mashibing.eurekaserver;
 import com.google.common.annotations.VisibleForTesting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,6 +21,13 @@ public class MainController {
     @GetMapping("/alive")
     public String Alive(){
         return userApi.isAlive();
+    }
+
+
+    @GetMapping("/getById")
+    Integer getById(@RequestParam("id") Integer id){
+        System.out.println(id);
+        return  userApi.getById(123);
     }
 
 
