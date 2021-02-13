@@ -27,7 +27,7 @@ public class MainController {
     @GetMapping("/getById")
     Integer getById(@RequestParam("id") Integer id){
         System.out.println(id);
-        return  userApi.getById(123);
+        return  userApi.getById(id);
     }
 
 
