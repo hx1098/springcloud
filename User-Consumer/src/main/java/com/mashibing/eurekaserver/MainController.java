@@ -1,9 +1,9 @@
 package com.mashibing.eurekaserver;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.sun.jnlp.ApiDialog;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -90,6 +90,21 @@ public class MainController {
 //		syso
         System.out.println(map);
         return userApi.postMap(map);
+    }
+
+
+    /**
+     *  这里的Map<String,Object> map  必须要加  @RequestParam
+     * @param map
+     * @return
+     */
+    @GetMapping("/postPerson")
+    public Person postPerson(@RequestParam Map<String,Object> map) {
+        System.out.println(map);
+        Person person = new Person();
+        person.setId(Integer.parseInt(map.get("id").toString()));
+        person.setName("OxxO");
+        return userApi.postPerson(person);
     }
 
 

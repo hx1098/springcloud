@@ -1,8 +1,10 @@
 package com.mashibing.eurekaserver;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Period;
 import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -71,6 +73,12 @@ public class UserController implements UserApi{
     public Map<Integer, String> postMap(@RequestBody Map<String, Object> map) {
         System.out.println(map);
         return Collections.singletonMap(Integer.parseInt(map.get("id").toString()), map.get("name").toString());
+    }
+
+    @PostMapping("/postPerson")
+    public Person postMap2(@RequestBody Person person) {
+        System.out.println(ToStringBuilder.reflectionToString(person));
+        return person;
     }
 
 
