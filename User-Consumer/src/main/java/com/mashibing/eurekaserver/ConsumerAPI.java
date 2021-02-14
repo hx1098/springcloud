@@ -2,6 +2,10 @@ package com.mashibing.eurekaserver;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @author hx
@@ -13,4 +17,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "user-provider")
 public interface ConsumerAPI  extends UserApi{
     //继承之后, 都不需要写了
+
+
+    /**
+     * 如果想写自己顶一个的, 就直接在这里面写就行了
+     * @param id
+     * @return
+     */
+    @GetMapping("/getMap")
+    Map<Integer,String> getMap(@RequestParam("id") Integer id);
+
+
+    @GetMapping("/getMap2")
+    Map<Integer, String> getMap2(@RequestParam("id") Integer id,@RequestParam("name") String name);
+
+    @GetMapping("/getMap3")
+    Map<Integer, String> getMap3(@RequestParam Map<String, Object> map);
+
+    @PostMapping("/postMap")
+    Map<Integer, String> postMap(Map<String, Object> map);
 }

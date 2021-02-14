@@ -43,7 +43,7 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <!-- HttpClient 实现 -->
+        <!-- HttpClient 实现, 防止出现not support, 混淆视听-->
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-httpclient</artifactId>
