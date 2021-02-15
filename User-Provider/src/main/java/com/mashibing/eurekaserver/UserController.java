@@ -32,15 +32,12 @@ public class UserController implements UserApi{
     public String isAlive(){
         try {
             System.out.println("准备睡");
-
-            Thread.sleep(500);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         int i = count.getAndIncrement();
-        System.out.println("====好的第：" + i + "次调用");
+        System.out.println(port + "====第：" + i + "次调用");
         return "port:" + port;
     }
 
