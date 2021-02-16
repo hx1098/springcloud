@@ -10,17 +10,17 @@ import java.util.Map;
  * @option
  * @description
  */
-@RequestMapping("User")
+//@RequestMapping("User")
 public interface UserApi {
 
     /**
      * 测试
      * @return lalala
      */
-    @GetMapping("/alive")
+    @GetMapping("User/alive")
     String isAlive();
 
-    @GetMapping("/getById")
+    @GetMapping("User/getById")
     Integer getById(@RequestParam("id") Integer id);
 
 

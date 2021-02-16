@@ -52,15 +52,15 @@ public class MainController {
     public String vip() {
 
         return mapi.getVip();
-    }*/
+    }
 
-    @GetMapping("/map")
+  /*  @GetMapping("/map")
     public Map<Integer, String> map(Integer id) {
         System.out.println(id);
         return userApi.getMap(id);
-    }
+    }*/
 
-    @GetMapping("/map2")
+   /* @GetMapping("/map2")
     public Map<Integer, String> map2(Integer id,String name) {
         System.out.println(id);
         return userApi.getMap2(id,name);

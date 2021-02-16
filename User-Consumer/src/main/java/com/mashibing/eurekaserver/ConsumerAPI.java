@@ -15,7 +15,8 @@ import java.util.Map;
  * @description
  */
 //此方法,不结合eureka,自定义一个client名字,就用url树形来指定服务器列表,
-@FeignClient(name = "user-provider")
+//@FeignClient(name = "user-provider",fallback = UserProviderBack.class)
+@FeignClient(name = "user-provider",fallbackFactory = UserProviderBacktoryFactory.class)
 public interface ConsumerAPI  extends UserApi{
     //继承之后, 都不需要写了
 
