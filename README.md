@@ -14,4 +14,10 @@
      
   ```
 
+- 2.地址类
+######1.hystrixdashboard 的浏览地址: 
+  http://localhost:91/actuator/hystrix.stream
+  http://localhost:91/hystrix
+ 
+######2.
   
