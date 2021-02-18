@@ -30,17 +30,17 @@ public class UserController implements UserApi{
 
     @Override
     public String isAlive(){
-       /*try {
+//       try {
             System.out.println("准备睡");
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
+//            Thread.sleep(4000);
+       /* } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
         System.out.println("准备睡");
-        int j = 1/0;
-//        int i = count.getAndIncrement();
-//        System.out.println(port + "====第：" + i + "次调用");
-        return "port:" + port;
+//        int j = 1/0;
+        int i = count.getAndIncrement();
+        System.out.println(port + "====第：" + i + "次调用");
+        return "provider port:" + port;
     }
 
     @Override
