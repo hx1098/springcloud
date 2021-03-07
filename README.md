@@ -42,5 +42,14 @@
     http://localhost/dalao/pc.html
     
 ```
+
+ ####### 3.zipkin官方安装地址
+```java
+  #java8支持
+  curl -sSL https://zipkin.io/quickstart.sh | bash -s
+  java -jar zipkin.jar
+    
+```
+
    
   
