@@ -87,6 +87,20 @@
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
 
+
+
+        <!--spring cloud Admin 服务 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <!--spring cloud Admin 服务  连带的-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
