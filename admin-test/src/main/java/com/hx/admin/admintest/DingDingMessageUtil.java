@@ -17,7 +17,7 @@ public class DingDingMessageUtil {
 
 
     // 从钉钉群获取的
-    public static String access_token = "55420aefab13c4cf75b3ad144a0efa71ba406ba0037e2619fb99ad2ca5e2c452";
+    public static String access_token = "55420aegab12c4cf75b3ad144a0efa71ba406ba0037e2619fb99ad2ca5e2c452";
 
     public static void sendTextMessage(String msg) {
 
