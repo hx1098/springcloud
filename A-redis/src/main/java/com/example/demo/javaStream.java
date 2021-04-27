@@ -264,7 +264,7 @@ public class javaStream {
         Integer reduce4 = list.stream().reduce(0, Integer::max);
         System.out.println(reduce4);
 
-
+        //https://gitee.com/hx1098/spring-cloud-config.git
 
     }
 
