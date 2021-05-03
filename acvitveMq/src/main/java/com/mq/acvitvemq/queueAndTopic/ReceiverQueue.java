@@ -22,8 +22,10 @@ public class ReceiverQueue {
 //        Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         Queue queue = session.createQueue("user");
-        MessageConsumer consumer = session.createConsumer(queue);
+        String selector = "age =18 and price < 200";
+        MessageConsumer consumer = session.createConsumer(queue,selector);
         consumer.setMessageListener(new MyLisener());
+
 
 
 

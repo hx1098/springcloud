@@ -30,8 +30,6 @@ public class SenderQueue {
         Connection connection = connectionFactory.createConnection();
 
 
-//        自动确认
-//        手动确认的session 事物必须是false, 否则会抛异常
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
         Queue queue = session.createQueue("user");
@@ -39,11 +37,34 @@ public class SenderQueue {
         MessageProducer producer = session.createProducer(queue);
 
         MapMessage map = session.createMapMessage();
-        map.setString("name", "xiaoa");
+        map.setStringProperty("name", "zhangsan");
+        map.setString("name", "zhangsan");
         map.setInt("age", 18);
-        map.setDouble("price", 398);
+        map.setIntProperty("age", 18);
+        map.setDouble("price", 188);
+        map.setDoubleProperty("price", 188);
+
+        MapMessage map2 = session.createMapMessage();
+        map2.setString("name", "lisi");
+        map2.setStringProperty("name", "lisi");
+        map2.setInt("age", 19);
+        map2.setIntProperty("age", 19);
+        map2.setDoubleProperty("price", 200);
+        map2.setDouble("price", 200);
+
+        MapMessage map3 = session.createMapMessage();
+        map3.setString("name", "wangwu");
+        map3.setStringProperty("name", "wangwu");
+        map3.setInt("age", 20);
+        map3.setIntProperty("age", 20);
+        map3.setDoubleProperty("price", 300);
+        map3.setDouble("price", 300);
+
+
 
         producer.send(map);
+        producer.send(map2);
+        producer.send(map3);
         connection.close();
 
     }

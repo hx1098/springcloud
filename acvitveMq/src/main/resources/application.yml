@@ -1,0 +1,14 @@
+# 应用名称
+server:
+  port: 8090
+
+spring:
+  application:
+    name: activeMq
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  jms:
+    pub-sub-domain: true
+

@@ -1,6 +1,7 @@
 package com.mq.acvitvemq.queueAndTopic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.ScheduledMessage;
 
 import javax.jms.*;
 
@@ -25,52 +26,30 @@ public class SenderTopic {
     public static void main(String[] args) throws JMSException, InterruptedException {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
                 "admin",
-               "admin",
+                "admin",
                 "tcp://localhost:61616");
         Connection connection = connectionFactory.createConnection();
-
-
-//        自动确认
-//        手动确认的session 事物必须是false, 否则会抛异常
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
         Destination topic = session.createTopic("user");
-
         MessageProducer producer = session.createProducer(topic);
 
-        Girl gril = new Girl("王麻子", "25", "398.0");
+        TextMessage textMessage = session.createTextMessage("Hi, my name is hx");
+
+        long delay  = 10 * 1000;
+        int peat = 9;
+        int period = 2 * 1000;
+        textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY,delay);
+//        repeat是int类型的.
+        textMessage.setIntProperty(ScheduledMessage.AMQ_SCHEDULED_REPEAT,peat);
+        textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_PERIOD,period);
+
+        producer.send(textMessage);
 
 
-        ObjectMessage objectMessage = session.createObjectMessage(gril);
-        producer.send(objectMessage);
 
-//        producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-
-       /* for (int i = 0; i < 1000; i++) {
-            
-            TextMessage textMessage = session.createTextMessage("Hi, my name is hx" + i );
-//            Thread.sleep(3000);
-
-            *//*如果设置优先级的话, 就必须设置有优先级和没有优先级的*//*
-            if(i%4==0){
-                producer.send(textMessage,DeliveryMode.PERSISTENT,9,1000*100);
-            }else{
-                producer.send(textMessage);
-            }
-
-            *//*if(i%3 ==0) {
-                //基於事物的commit
-                session.commit();
-            }
-            if (i % 4==0){
-                //理想條件下如果发生异常要回滚
-                session.rollback();
-            }*//*
-        }*/
 
         connection.close();
         System.out.println("system exit.....");
-
 
 
     }
