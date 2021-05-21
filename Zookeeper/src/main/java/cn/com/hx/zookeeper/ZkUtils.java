@@ -15,7 +15,8 @@ import java.util.concurrent.CountDownLatch;
 public class ZkUtils {
     private static ZooKeeper zooKeeper;
 
-    private static String address = "192.168.190.66:2181,192.168.190.67:2181,192.168.190.68:2181,192.168.190.69:2181/testConf";
+//    private static String address = "192.168.190.66:2181,192.168.190.67:2181,192.168.190.68:2181,192.168.190.69:2181/testConf";
+    private static String address = "192.168.190.66:2181,192.168.190.67:2181,192.168.190.68:2181,192.168.190.69:2181/testLock";
 
     private  static ZooKeeper zk;
 

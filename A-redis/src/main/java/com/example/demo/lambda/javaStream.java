@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.lambda;
 
+import com.example.demo.Person;
 import org.junit.Test;
 
 import java.util.*;
