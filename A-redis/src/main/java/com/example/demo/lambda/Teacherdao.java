@@ -7,7 +7,7 @@ package com.example.demo.lambda;
  * @description 自定义函数式接口
  */
 @FunctionalInterface
-public interface Studentdao {
+public interface Teacherdao {
 
-    void insert(Student student);
+    int get(Teacher teacher);
 }

@@ -1,6 +1,7 @@
 package com.example.demo.lambda;
 
 import com.example.demo.Person;
+import com.sun.org.apache.xpath.internal.functions.FuncExtFunction;
 import org.junit.Test;
 
 import java.util.*;
@@ -269,6 +270,24 @@ public class javaStream {
 
     }
 
+
+    @Test
+    public void test33(){
+        List<Person> personList = new ArrayList<Person>();
+        personList.add(new Person("Tom", 8900, 23, "male", "New York"));
+        personList.add(new Person("Jack", 7000, 25, "male", "Washington"));
+        personList.add(new Person("Lily", 7800, 21, "female", "Washington"));
+        personList.add(new Person("Anni", 8200, 24, "female", "New York"));
+        personList.add(new Person("Owen", 9500, 25, "male", "New York"));
+        personList.add(new Person("Alisa", 7900, 26, "female", "New York"));
+
+        Optional<Person> max = personList.stream().max(Comparator.comparingInt(Person::getSalary));
+
+        Map<String, Integer> collect = personList.stream().collect(Collectors.toMap(Person::getName, Person::getAge));
+
+
+
+    }
 
 
 

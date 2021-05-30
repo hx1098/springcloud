@@ -1,8 +1,7 @@
 package com.xss.demo.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author hx
@@ -12,15 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
  * @description
  */
 
-@RestController
+@Controller
 public class TestController {
 
-    @GetMapping("/login")
-    public ModelAndView getString(){
+
+    @GetMapping("/hi")
+    public String get(){
         System.out.println("hello");
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/login");
-        return modelAndView;
+        return "hello";
+    }
+
+    @GetMapping("/login.html")
+    public String getString(){
+
+        System.out.println("hello");
+        return "login";
     }
 
 

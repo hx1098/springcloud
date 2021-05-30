@@ -1,8 +1,6 @@
 package com.example.demo.lambda;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author hx
@@ -14,13 +12,41 @@ public class Student  implements Serializable {
 
     private static final long serialVersionUID = -5060932244814195596L;
     private String name;
+    private int age;
+    private int score;
 
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        if (list == null) {
-
-        }
-        System.out.println();
-
+    public Student(String name, int age, int score) {
+        this.name = name;
+        this.age = age;
+        this.score = score;
     }
+
+    public Student() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+
 }
