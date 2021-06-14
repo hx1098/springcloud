@@ -32,5 +32,4 @@ public class Producer {
         producer.shutdown();
 
     }
-
 }

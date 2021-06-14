@@ -39,5 +39,4 @@ public class Consumer {
         consumer.start();
         System.out.println("start....");
     }
-
 }
