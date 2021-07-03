@@ -1,5 +1,7 @@
 package com.xss.demo.admin;
 
+import com.xss.demo.admin.service.MyDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,12 +17,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -84,24 +88,39 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-   /* *//*这里如果重新这个类的话, application.properties文件中的配置就失效, 并且要要加密*//*
+//     这里如果重新这个类的话, application.properties文件中的配置就失效, 并且要要加密
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.
+        /*auth.
 		inMemoryAuthentication()
 			.withUser("123").password(new BCryptPasswordEncoder().encode("123")).roles("admin")
 		.and()
 			.withUser("321").password("321").roles("user")
-		;
-    }*/
+		;*/
+       /* InMemoryUserDetailsManager   manager = new InMemoryUserDetailsManager();
+        auth.jdbcAuthentication().dataSource(dataSource).getUserDetailsService();
+        boolean  flag =manager.userExists("lisi");
+        System.out.println("是否存在: " + flag);
+        if(!flag){
+            manager.createUser(User.withUsername("lisi").password(new BCryptPasswordEncoder().encode("xx")).roles("xxz").build());
+        }
+*/
 
+        auth.userDetailsService(new MyDetailService());
+
+    }
+
+    @Autowired
+    DataSource dataSource;
 
     /**
      * 这种方法也可以进行登录, 但是不遵循jdbc的规范, InMemoryUserDetailsManager 中有jdbc的登录规范
+     *
      * @return
      */
-    @Bean
-    public UserDetailsService  userDetailsService(){
+/*    @Bean
+    public UserDetailsService userDetailsService() {
+//        基于内存的登录
 //        userDetails
        InMemoryUserDetailsManager   manager = new InMemoryUserDetailsManager();
 //       使用 用户名 找user对象
@@ -112,7 +131,18 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
        manager.createUser(User.withUsername("yiming").password(new BCryptPasswordEncoder().encode("xx")).roles("xxz").build());
        return manager;
 
-    }
+
+////        基于jdbc的登录
+//        JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
+////        如果这个用户不存在就添加
+//        boolean b = manager.userExists("lisi");
+//        System.out.println(" 用户是否存在: "+  b);
+//        if(!manager.userExists("lisi")){
+//            manager.createUser(User.withUsername("lisi").password(new BCryptPasswordEncoder().encode("111")).roles("admin","xxoo").build());
+//        }
+//        return manager;
+
+    }*/
 
 
     @Bean
