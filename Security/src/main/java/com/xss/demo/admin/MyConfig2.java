@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,9 @@ public class MyConfig2 extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .and()
-                .sessionManagement().maximumSessions(1)
+                .sessionManagement()
+                  .maximumSessions(1)  //只允许一个用户登录
+                .maxSessionsPreventsLogin(true) //不允许其他用户登录
 //                .rememberMe()
                 .and().and()
                 .csrf().disable();
@@ -78,4 +81,12 @@ public class MyConfig2 extends WebSecurityConfigurerAdapter {
     }
 
 
+    /**
+     * 即时清理过期session
+     * @return
+     */
+    @Bean
+    HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
+    }
 }
