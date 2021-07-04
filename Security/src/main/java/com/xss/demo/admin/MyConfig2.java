@@ -45,8 +45,9 @@ public class MyConfig2 extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .and()
-                .rememberMe()
-                .and()
+                .sessionManagement().maximumSessions(1)
+//                .rememberMe()
+                .and().and()
                 .csrf().disable();
 
 
