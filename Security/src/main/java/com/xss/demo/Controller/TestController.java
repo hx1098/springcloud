@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TestController {
 
 
-   /* @GetMapping("/hi")
+    @GetMapping("/hi")
     public String get(){
         System.out.println("hello 2");
         return "hello";
-    }*/
+    }
 
     @GetMapping("/login.html")
     public String getString(){

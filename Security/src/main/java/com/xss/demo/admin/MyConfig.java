@@ -38,8 +38,8 @@ import java.util.Collections;
  * @option
  * @description
  */
-@Configuration
-@EnableWebSecurity
+/*@Configuration
+@EnableWebSecurity*/
 public class MyConfig extends WebSecurityConfigurerAdapter {
 
     /*忽略静态请求 , 这种方式不走权限认证*/
