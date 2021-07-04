@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.AuthenticationException;
@@ -41,6 +42,13 @@ import java.util.Collections;
 @EnableWebSecurity
 public class MyConfig extends WebSecurityConfigurerAdapter {
 
+    /*忽略静态请求 , 这种方式不走权限认证*/
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+//        不登录就可以访问资源
+        web.ignoring().antMatchers("/img/**");
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -48,7 +56,7 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
                 // 哪些 地址需要登录
                         authorizeRequests()
                 //所有请求都需要验证
-                //	.antMatchers("/img/**").permitAll()
+                	.antMatchers("/img/**").permitAll()//忽略静态请求   http://localhost/img/1.jpg
                 .anyRequest().authenticated()
                 .and()
 
