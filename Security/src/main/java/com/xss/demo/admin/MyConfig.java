@@ -1,5 +1,6 @@
 package com.xss.demo.admin;
 
+import com.xss.demo.admin.service.MyAuthProvider;
 import com.xss.demo.admin.service.MyDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -106,7 +107,13 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
         }
 */
 
-        auth.userDetailsService(new MyDetailService());
+        auth.userDetailsService(new MyDetailService()).
+//                开关标签
+                and().
+                authenticationProvider(new MyAuthProvider());
+
+
+
 
     }
 
