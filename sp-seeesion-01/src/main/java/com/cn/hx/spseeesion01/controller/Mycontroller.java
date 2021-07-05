@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author hx
  * @version 1.0.0
@@ -17,8 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Mycontroller {
 
-    @GetMapping
-    public String getString(){
+    @GetMapping("set")
+    public String list(HttpServletRequest request){
+        request.getSession().setAttribute("aaa", "ooo");
+        return "xx00";
+    }
+
+    @GetMapping("get")
+    public String get(HttpServletRequest request){
+        Object attribute = request.getSession().getAttribute("aaa");
+        System.out.println(attribute.toString());
         return "xx00";
     }
 
