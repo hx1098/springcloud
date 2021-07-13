@@ -1,40 +1,37 @@
-package com.hx.mq.rocketmq.T002_listDemo;
+package com.hx.mq.rocketmq.T003_NoSyncMeeeage;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author hx
  * @version 1.0.0
  * @createTime 2021/6/13 17:12
  * @option
- * @description 发送list消息
+ * @description 异步消息
  * @editUser hx
  * @editTime 2021/6/13 17:12
  * @editDescription
  */
-public class Producer {
+public class Producer2 {
     public static void main(String[] args) throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("xoxoGP");
 
 //        设置namesever的地址;
         producer.setNamesrvAddr("192.168.190.132:9876");
         producer.start();
-//        发送消息
-//        topic 消息将要发送的地址
-//        body  消息中将要发送的数据
+//      异步可靠消息,
+//      不会阻塞,等待broker的确认,采用事件监听方式接受broker返回的确认
+//        producer.setRetryTimesWhenSendAsyncFailed();
+        Message ms = new Message("xxoo-001","xxoo".getBytes());
 
-        List<Message> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            Message message = new Message("xxoo-001", ("我发送了" + i + "条消息").getBytes());
-            list.add(message);
-        }
-        SendResult send = producer.send(list);
-        System.out.println(send);
+//        仅仅发送一次,不管信息是否到达
+        producer.sendOneway(ms);
+
+
+
         producer.shutdown();
         System.out.println("已经停机.....");
 

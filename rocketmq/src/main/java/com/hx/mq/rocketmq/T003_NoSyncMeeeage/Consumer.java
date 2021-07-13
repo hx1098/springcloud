@@ -1,4 +1,4 @@
-package com.hx.mq.rocketmq.T002_listDemo;
+package com.hx.mq.rocketmq.T003_NoSyncMeeeage;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0.0
  * @createTime 2021/6/13 20:21
  * @option
- * @description 发送list消息
+ * @description 异步消息
  * @editUser hx
  * @editTime 2021/6/13 20:21
  * @editDescription

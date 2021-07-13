@@ -31,10 +31,10 @@ public class ShiftOperation {
         int a = 1;
         int b = 3;
         /*预期结果: a = 3, b = 1;*/
-        /*System.out.println(a ^ a ^ b);
-        System.out.println(b ^ b ^ a);*/
+        System.out.println(a ^ a ^ b);
+        System.out.println(b ^ b ^ a);
 
-        System.out.println(a^b);
+      /*  System.out.println(a^b);
         System.out.println(a^b^b);
         System.out.println(a^b^a);
 
@@ -46,13 +46,12 @@ public class ShiftOperation {
         System.out.println(i);
 
         System.out.println(i^i);
-        System.out.println(i^i^1);
+        System.out.println(i^i^1);*/
 
     }
 
     @Test
     public void test3(){
-        System.out.println(-128
-        );
+        System.out.println(-128);
     }
 }

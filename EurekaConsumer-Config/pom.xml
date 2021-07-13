@@ -11,9 +11,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mashibing.eureka-server</groupId>
-    <artifactId>Eureka-Consumer-Config</artifactId>
+    <artifactId>EurekaConsumer-Config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Eureka-Consumer-Config</name>
+    <name>EurekaConsumer-Config</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.org.apache.xpath.internal.functions.FuncFalse;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.Message;
@@ -35,6 +36,7 @@ public class TestRedis {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Test
     public void testRedis(){
         //高阶api
         /*stringRedisTemplate.opsForValue().set("hello","china");
