@@ -1,4 +1,4 @@
-package com.hx.mq.rocketmq.T002_listDemo;
+package com.hx.mq.rocketmq.T004_callback;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -13,14 +13,14 @@ import java.util.List;
  * @version 1.0.0
  * @createTime 2021/6/13 20:21
  * @option
- * @description 发送list消息
+ * @description 异步消息
  * @editUser hx
  * @editTime 2021/6/13 20:21
  * @editDescription
  */
 public class Consumer {
     public static void main(String[] args) throws Exception {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("xoxoGP");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group-001");
         consumer.setNamesrvAddr("192.168.190.132:9876");
 
 //        每一个consumer关注一个topic
@@ -38,8 +38,5 @@ public class Consumer {
         });
         consumer.start();
         System.out.println("start....");
-
-
-
     }
 }

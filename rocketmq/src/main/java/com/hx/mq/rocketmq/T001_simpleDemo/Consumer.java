@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class Consumer {
     public static void main(String[] args) throws Exception {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group-001");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("xoxoGP");
         consumer.setNamesrvAddr("192.168.190.132:9876");
 
 //        每一个consumer关注一个topic
