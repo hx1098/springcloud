@@ -1,4 +1,4 @@
-package com.hx.mq.rocketmq.T004_callback;
+package com.hx.mq.rocketmq.T006_tag;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendCallback;
@@ -8,26 +8,25 @@ import org.apache.rocketmq.common.message.Message;
 /**
  * @author hx
  * @version 1.0.0
- * @createTime 2021/6/13 17:12
+ * @createTime 2021/7/16 7:11
  * @option
- * @description 异步消息
+ * @description 消息过滤
  * @editUser hx
- * @editTime 2021/6/13 17:12
+ * @editTime 2021/7/16 7:11
  * @editDescription
  */
-public class Producer2 {
+public class Producer1 {
     public static void main(String[] args) throws Exception {
-        DefaultMQProducer producer = new DefaultMQProducer("group-001");
+        DefaultMQProducer producer = new DefaultMQProducer("group-002");
 
 
         producer.setNamesrvAddr("192.168.190.132:9876");
         producer.start();
 
-        Message ms = new Message("xxoo-001","xxoo".getBytes());
+//        tag 其实就是标签的意思
 
+        Message ms = new Message("xxoo-002","TAG-001","KEY-CHOUBAOER","xxoo".getBytes());
 
-
-//        producer.setRetryTimesWhenSendAsyncFailed(100); 设置超时时候消息重投的时间
         producer.send(ms, new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
@@ -37,8 +36,6 @@ public class Producer2 {
 
             @Override
             public void onException(Throwable e) {
-//                如果发生异常,case 异常, 或者尝试重投
-//                或者调整业务逻辑
                 e.printStackTrace();
                 System.out.println("发送异常!");
             }

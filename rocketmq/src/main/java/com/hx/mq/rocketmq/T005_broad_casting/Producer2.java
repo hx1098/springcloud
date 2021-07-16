@@ -1,4 +1,4 @@
-package com.hx.mq.rocketmq.T003_NoSyncMeeeage;
+package com.hx.mq.rocketmq.T005_broad_casting;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendCallback;
@@ -19,20 +19,31 @@ public class Producer2 {
     public static void main(String[] args) throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("group-001");
 
-//        设置namesever的地址;
+
         producer.setNamesrvAddr("192.168.190.132:9876");
         producer.start();
-//      异步可靠消息,
-//      不会阻塞,等待broker的确认,采用事件监听方式接受broker返回的确认
-//        producer.setRetryTimesWhenSendAsyncFailed();
+
         Message ms = new Message("xxoo-001","xxoo".getBytes());
 
-//        仅仅发送一次,不管信息是否到达,单向消息
-        producer.sendOneway(ms);
+
+
+        producer.send(ms, new SendCallback() {
+            @Override
+            public void onSuccess(SendResult sendResult) {
+                System.out.println("消息发送成功!");
+                System.out.println("sendResult" + sendResult);
+            }
+
+            @Override
+            public void onException(Throwable e) {
+                e.printStackTrace();
+                System.out.println("发送异常!");
+            }
+        });
 
 
 
-        producer.shutdown();
+//        producer.shutdown();
         System.out.println("已经停机.....");
 
     }
