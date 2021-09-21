@@ -1,6 +1,8 @@
 package com.mashibing.eurekaserver;
 
+
 import com.sun.jndi.toolkit.url.Uri;
+import com.sun.org.apache.xml.internal.utils.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
