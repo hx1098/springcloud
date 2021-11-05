@@ -25,7 +25,7 @@ public class Producer1 {
 
 //        tag 其实就是标签的意思
 
-        Message ms = new Message("xxoo-002","TAG-001","KEY-CHOUBAOER","xxoo".getBytes());
+        Message ms = new Message("xxoo-002","TAG-001","KEY-CHOUBAOER","xxoo-002发送的消息".getBytes());
 
         producer.send(ms, new SendCallback() {
             @Override

@@ -23,7 +23,7 @@ public class Producer2 {
         producer.setNamesrvAddr("192.168.190.132:9876");
         producer.start();
 
-        Message ms = new Message("xxoo-001","xxoo".getBytes());
+        Message ms = new Message("xxoo-001","佛ID死哦if奇偶撒我及的扫地机".getBytes());
 
 
 

@@ -14,6 +14,8 @@ import org.apache.rocketmq.common.message.Message;
  * @editUser hx
  * @editTime 2021/7/16 7:11
  * @editDescription
+ *
+ *  tag可以将消息进行过滤,不同的消费者可以订阅一个topic, 但是可以指定特定的tag标签.
  */
 public class Producer2 {
     public static void main(String[] args) throws Exception {
@@ -25,7 +27,7 @@ public class Producer2 {
 
 //        tag 其实就是标签的意思
 
-        Message ms = new Message("xxoo-002","TAG-002","KEY-CHOUBAOER","xxoo".getBytes());
+        Message ms = new Message("xxoo-002","TAG-002","KEY-CHOUBAOER","xxoo-002-tag002发送的消息".getBytes());
 
         producer.send(ms, new SendCallback() {
             @Override

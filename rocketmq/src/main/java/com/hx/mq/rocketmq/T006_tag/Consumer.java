@@ -25,7 +25,7 @@ public class Consumer {
         consumer.setNamesrvAddr("192.168.190.132:9876");
 
 //        这里我只接受TAG-001 发送的消息
-        consumer.subscribe("xxoo-002", "TAG-001");
+        consumer.subscribe("xxoo-002", "TAG-002");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
