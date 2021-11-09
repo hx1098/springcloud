@@ -3,6 +3,7 @@ package com.hx.mq.rocketmq.T007_TCC;
 import org.apache.rocketmq.client.producer.*;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.springframework.cglib.proxy.Enhancer;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,8 +30,6 @@ public class Producer {
         TransactionMQProducer producer = new TransactionMQProducer("group-tran");
 
         producer.setNamesrvAddr("192.168.190.132:9876");
-
-
 
 
         producer.setTransactionListener(new TransactionListener() {
@@ -67,15 +66,7 @@ public class Producer {
         System.out.println("已经停机.....");
 
         CountDownLatch latch = new CountDownLatch(2);
-
-
-        ReentrantLock lock = new ReentrantLock();
-        ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-        ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
-        ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
-
         //Semaphore
-
 
     }
 }
