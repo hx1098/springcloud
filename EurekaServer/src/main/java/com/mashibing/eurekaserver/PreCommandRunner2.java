@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @editDescription 测试springboot 先执行的方法
  */
 @Component
-@Order(2)
+@Order(2) //这里的值越小, 执行的优先级越高
 public class PreCommandRunner2 implements CommandLineRunner {
 
 
