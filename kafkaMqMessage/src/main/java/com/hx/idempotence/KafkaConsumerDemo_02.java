@@ -1,4 +1,4 @@
-package com.hx.acks;
+package com.hx.idempotence;
 
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;
