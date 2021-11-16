@@ -23,7 +23,7 @@ public class KafkaProducerDemo {
         //检测的超时时间.
         props.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 1);
 
-        //<editor-fold desc="kafka 的幂等写">
+        //<editor-fold desc="kafka 的幂等写, d但是版本必须在1.1.0以上">
         //开启kafka的幂等性
         props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
         props.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 1);
