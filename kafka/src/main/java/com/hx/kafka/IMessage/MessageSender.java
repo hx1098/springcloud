@@ -26,6 +26,5 @@ public class MessageSender implements IMessageSender {
     @Override
     public void sendMessage(String topic, String key, String message) {
         kafkaTemplate.send(new ProducerRecord<String, String>(topic, key, message));
-
     }
 }
