@@ -34,11 +34,11 @@ public class AopTest01Controller {
     @PostMapping(value = "/permission")
     @PermissionAnnotation()
     public JSONObject test02(@RequestBody JSONObject request) {
-        try {
+      /*  try {
             TimeUnit.MILLISECONDS.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         return JSON.parseObject("{\"message\":\"SUCCESS\",\"code\":200}");
     }
 
