@@ -5,6 +5,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author hx   <br>
@@ -37,15 +40,28 @@ public class mainController3 {
     @Autowired
     DiscoveryClient discoveryClient;
 
+    @Autowired
+    ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
+
 
     /**
      * 这样也可以访问到远程接口
      * @return
      */
     @GetMapping("client10")
-    public Object client9(){
+    public Object client9() throws ExecutionException, InterruptedException {
         String url =  "http://provider/getHi";
         System.out.println(url);
+
+        CompletableFuture<Void> completableFuture2 = CompletableFuture.runAsync(() -> {
+            System.out.println(11);
+        }, threadPoolTaskExecutor);
+        CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
+            System.out.println(2);
+        }, threadPoolTaskExecutor);
+        CompletableFuture.allOf(completableFuture, completableFuture2).get();
+
         ResponseEntity<String> forEntity = restTemplate.getForEntity(url, String.class);
         System.out.println(forEntity);
 
