@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 public class EurekaCousumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(EurekaCousumerApplication.class);
+        System.out.println(11);
     }
 
     @Bean
